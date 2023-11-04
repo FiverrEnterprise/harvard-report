@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+
+        @font-face {
+            font-family: 'Noto Serif Display';
+            src: url('/Users/antaeus.coe/Desktop/Noto_Serif_Display/NotoSerifDisplay-VariableFont_wdth,wght.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 77vh;
+            margin: 20;
+        }
+
+        .form-container {
+            width: 811px; /* Matches the given width from the image */
+            padding: 64px; /* Matches the given padding from the image */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fafafa;
+        }
+
+        .input-label {
+            font-weight: 549;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .input-fields {
+            display: flex;
+            justify-content: space-between;
+            width: 100%; 
+            margin-bottom: 2px;
+        }
+
+        .left-set,
+        .right-set {
+            width: 47%; /* Reduced slightly to account for potential padding/margin */
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px 20px;
+            padding-left: 10px;
+            font-size: 16px;
+            margin: 12px 0;
+            margin-bottom: 60px; /* Adjusted from 8px to 16px to create more vertical space */
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #ffffff;
+        }
+
+        .privacy-statement {
+            line-height: 1.5;
+            text-align: justify;
+            font-size: 13px;
+            color: #97999f;
+            width: 105%; /* Adjusted width */
+            text-align: left; /* Adjusted alignment */
+            margin-top: 0px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        a {
+            color: #7266fe;
+        }
+
+        .checkbox-container {
+            width: 80%; /* Adjusted width */
+            text-align: left; /* Adjusted alignment */
+            margin-bottom: 60px;
+            margin-top: 50px;
+            display: flex; /* Flex container */
+            align-items: center; /* Align vertically centered */
+            position: relative;
+        }
+
+        .checkbox-container label::before {
+            content: "•";
+            display: inline-block;
+            margin-right: 20px; /* Adjust spacing between the bullet and the checkbox */
+            font-size: 20px;
+            vertical-align: middle;
+            position: absolute;
+            left: -20px;
+        }
+
+        input[type="checkbox"] {
+            margin: 0; /* Resetting the margins */
+            margin-right: 10px; /* Space between the checkbox and the label */
+        }
+
+        .submit-btn {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: #2E25AD;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 150px; /* Given a fixed width */
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+
+            font-family: 'Noto Serif Display', serif;
+        }
+
+           /* RESPONSIVE DESIGN - PLACE AT THE BOTTOM OF THE STYLE TAG */
+           @media only screen and (max-width: 600px) {
+            .form-container {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .left-set, .right-set {
+                width: 100%;
+            }
+        }
+
+        .required-text { 
+            text-align: center;
+            margin-top: 16px; 
+            margin-bottom: 20px;
+            letter-spacing: 1.25px;
+            color: #97999f; 
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h1>Download Report</h1>
+        <p class="required-text">All fields are required</p>   <!-- Add this line here -->
+        <form action="#" style="width: 100%;">
+            <div class="input-fields">
+                <div class="left-set">
+                    <label class="input-label" for="fname">First Name*</label>
+                    <input type="text" id="fname" name="fname" placeholder="*First Name">
+
+                    <label class="input-label" for="title">Title*</label>
+                    <input type="text" id="title" name="title" placeholder="*Title">
+                </div>
+
+                <div class="right-set">
+                    <label class="input-label" for="lname">Last Name*</label>
+                    <input type="text" id="lname" name="lname" placeholder="*Last Name">
+
+                    <label class="input-label" for="email">Work Email*</label>
+                    <input type="text" id="email" name="email" placeholder="*Email">
+                </div>
+            </div>
+
+            <p class="privacy-statement">
+                <a href="https://enterprise.fiverr.com">Fiverr Enterprise</a> uses the information you provide to us to contact you about our relevant content, products, and services. You may unsubscribe from these communications at any time. For information on how to unsubscribe, as well as our privacy practices and commitment to protecting your privacy, please review our <a href="#">Fiverr Privacy Policy</a> and <a href="#">Fiverr Enterprise Privacy Policy</a>.
+            </p>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="agree" name="agree" required>
+                <label for="agree">I Agree</label>
+            </div>
+
+            <input type="submit" value="Download Now" class="submit-btn">
+        </form>
+    </div>
+    <script>
+        let formData = {
+            firstName: "",
+            lastName: "",
+            title: "",
+            email: "",
+            agree: false
+        };
+    
+        // Event listeners for each form field to capture changes
+        document.querySelector("#fname").addEventListener("input", function(e) {
+            formData.firstName = e.target.value;
+        });
+        document.querySelector("#lname").addEventListener("input", function(e) {
+            formData.lastName = e.target.value;
+        });
+        document.querySelector("#title").addEventListener("input", function(e) {
+            formData.title = e.target.value;
+        });
+        document.querySelector("#email").addEventListener("input", function(e) {
+            formData.email = e.target.value;
+        });
+        document.querySelector("#agree").addEventListener("change", function(e) {
+            formData.agree = e.target.checked;
+        });
+        
+        document.querySelector(".submit-btn").addEventListener("click", function(e) {
+            e.preventDefault();
+    
+            if(!formData.agree) {
+                alert("You must agree before downloading the report.");
+                return;
+            }
+    
+            let webAppUrl = "https://script.google.com/macros/s/AKfycbw4qwM0Fs2VDz2mdUltf7JquND6B4sTh2Tvlpz23cGRlapm-yYLG_zTxVE4Ma2eslAc/exec";  // Your actual Google Apps Script web app URL
+    
+            let bodyData = `firstName=${encodeURIComponent(formData.firstName)}&lastName=${encodeURIComponent(formData.lastName)}&title=${encodeURIComponent(formData.title)}&email=${encodeURIComponent(formData.email)}`;
+            
+            fetch(webAppUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: bodyData
+            })
+            .then(response => response.text())
+            .then(text => {
+                window.open("https://propages.fiverr.com/hubfs/Landing%20page%202023/Harvard_Business_Review_Report/Taking_A_Strategic_Approach_to_Using_Freelance_Talent.pdf", '_blank');
+            });
+        });
+    </script>
+    
+    </body>
+    </html>
+    
+
